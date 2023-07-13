@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if (gameOver == true)
                 return;
 
+        // Character Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         //Display the ammount of pickups left in out scene
         scoreText.text = "Pickups Left: " + pickupCount;
 
+        // Win condition 
         if (pickupCount == 0)
         {
             WinGame();
