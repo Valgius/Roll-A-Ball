@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private Timer timer;
     private bool gameOver;
 
+    //Controllers
+    CameraController cameraController;
+
     [Header("UI")]
     public GameObject inGamePanel;
     public GameObject gameOverPanel;
@@ -42,6 +45,10 @@ public class PlayerController : MonoBehaviour
         //Enables reset point
         resetPoint = GameObject.Find("Reset Point");
         originalColour = GetComponent<Renderer>().material.color;
+
+        cameraController = FindObjectOfType<CameraController>();
+
+        Time.timeScale = 1;
     }
 
     private void Update()
@@ -61,8 +68,16 @@ public class PlayerController : MonoBehaviour
         // Character Movement
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+
+        if(cameraController.cameraStyle == CameraStyle.Free)
+        {
+            //rotates the player to the direction of the camera
+            transform.eulerAngles = Camera.main.transform.eulerAngles;
+            //translates the input vectors into coordinates
+            movement = transform.TransformDirection(movement);
+        }
+
         rb.AddForce(movement * speed);
     }
 
