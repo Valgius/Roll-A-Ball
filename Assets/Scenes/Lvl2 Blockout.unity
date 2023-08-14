@@ -5321,8 +5321,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time: 0:00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 726b25f004de1ba4593e776f55f4223d, type: 2}
-  m_sharedMaterial: {fileID: 3734647098501287247, guid: 726b25f004de1ba4593e776f55f4223d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5689,6 +5689,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1185093986}
+  cameraStyle: 0
+  pivot: {fileID: 0}
+  rotationSpeed: 1
 --- !u!1 &1004629625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5945,8 +5948,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Pickups Left: 99'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 726b25f004de1ba4593e776f55f4223d, type: 2}
-  m_sharedMaterial: {fileID: 3734647098501287247, guid: 726b25f004de1ba4593e776f55f4223d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7861,7 +7864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   inGamePanel: {fileID: 502884918}
-  winPanel: {fileID: 1613100620}
+  gameOverPanel: {fileID: 0}
   scoreText: {fileID: 1025453889}
   timerText: {fileID: 913770669}
   winTimeText: {fileID: 1270007423}
