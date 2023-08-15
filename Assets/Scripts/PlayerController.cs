@@ -6,10 +6,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5.0f;
+    [HideInInspector]
+    public float baseSpeed;
     private Rigidbody rb;
     private int pickupCount;
     GameObject resetPoint;
     bool resetting = false;
+    bool grounded = true;
+    bool activePowerup = false;
     Color originalColour;
     private Timer timer;
     private bool gameOver;
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        baseSpeed = speed;
         rb = GetComponent<Rigidbody>();
 
         //Get the number of pickups in our scene
@@ -65,20 +70,23 @@ public class PlayerController : MonoBehaviour
         if (resetting)
             return;
 
-        // Character Movement
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-
-        if(cameraController.cameraStyle == CameraStyle.Free)
+        if (grounded)
         {
-            //rotates the player to the direction of the camera
-            transform.eulerAngles = Camera.main.transform.eulerAngles;
-            //translates the input vectors into coordinates
-            movement = transform.TransformDirection(movement);
-        }
+            // Character Movement
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-        rb.AddForce(movement * speed);
+            if (cameraController.cameraStyle == CameraStyle.Free)
+            {
+                //rotates the player to the direction of the camera
+                transform.eulerAngles = Camera.main.transform.eulerAngles;
+                //translates the input vectors into coordinates
+                movement = transform.TransformDirection(movement);
+            }
+
+            rb.AddForce(movement * speed);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,6 +98,12 @@ public class PlayerController : MonoBehaviour
             pickupCount -= 1;
             //Run the check pickips function
             SetCountText();
+        }
+
+        if(other.gameObject.CompareTag("Powerup"))
+        {
+            activePowerup = true;
+            other.GetComponent<Powerup>().UsePowerup();
         }
     }
 
@@ -130,6 +144,31 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetPlayer());
         }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (activePowerup == false)
+            {
+                StartCoroutine(ResetPlayer());
+            }
+            else
+            {
+                //Logic for killing enemy
+                Destroy(collision.gameObject);
+            }
+        } 
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            grounded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+            grounded = false;
     }
 
     public IEnumerator ResetPlayer()
