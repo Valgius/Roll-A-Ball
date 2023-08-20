@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private bool gameOver;
 
     //Controllers
+    SoundController soundController;
     CameraController cameraController;
 
     [Header("UI")]
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
         inGamePanel.SetActive(true);
         //Turn off our Game Over Panel
         gameOverPanel.SetActive(false);
+
+        soundController = FindObjectOfType<SoundController>();
 
         //Enables reset point
         resetPoint = GameObject.Find("Reset Point");
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
             }
 
             rb.AddForce(movement * speed);
+            soundController.PlayPlayerSound();
         }
     }
 
@@ -98,12 +102,14 @@ public class PlayerController : MonoBehaviour
             pickupCount -= 1;
             //Run the check pickips function
             SetCountText();
+            soundController.PlayPickupSound();
         }
 
         if(other.gameObject.CompareTag("Powerup"))
         {
             activePowerup = true;
             other.GetComponent<Powerup>().UsePowerup();
+            soundController.PlayPowerupSound();
         }
     }
 
@@ -133,6 +139,8 @@ public class PlayerController : MonoBehaviour
         //Display the timer on the win time text
         winTimeText.text = "Your time was: " + timer.GetTime().ToString("F2");
 
+        soundController.PlayWinSound();
+
         //Set the Velocity of the rigidbody to zero
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -155,8 +163,15 @@ public class PlayerController : MonoBehaviour
             {
                 //Logic for killing enemy
                 Destroy(collision.gameObject);
+                soundController.PlayCollisionSound(collision.gameObject);
+                activePowerup = false;
             }
         } 
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            soundController.PlayCollisionSound(collision.gameObject);
+        }
     }
 
     private void OnCollisionStay(Collision collision)

@@ -12,7 +12,7 @@ public class Powerup : MonoBehaviour
     public float SpeedUpMultiplier = 2;
     public float SpeedDownMultiplier = 3;
     PlayerController playerController;      //a reference to out player controller
-    
+
     void Start()
     {
         //find and assign the player controller object to this local reference
