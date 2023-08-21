@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour
             }
 
             rb.AddForce(movement * speed);
-            soundController.PlayPlayerSound();
         }
     }
 
@@ -162,11 +161,22 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //Logic for killing enemy
-                Destroy(collision.gameObject);
                 soundController.PlayCollisionSound(collision.gameObject);
+                Destroy(collision.gameObject);
                 activePowerup = false;
             }
-        } 
+        }
+
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            if (activePowerup == true)
+            {
+                //Logic for breaking Objects
+                soundController.PlayCollisionSound(collision.gameObject);
+                Destroy(collision.gameObject);
+                activePowerup = false;
+            }
+        }
 
         if (collision.gameObject.CompareTag("Wall"))
         {
