@@ -9,6 +9,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene(_sceneName);
     }
 
+    public string GetSceneName()
+    {
+        return SceneManager.GetActiveScene().name; 
+    }
+
     //Reloads the current scene we are in
     public void ReloadScene()
     {

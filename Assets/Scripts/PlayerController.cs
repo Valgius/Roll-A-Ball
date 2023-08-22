@@ -15,11 +15,12 @@ public class PlayerController : MonoBehaviour
     bool grounded = true;
     bool activePowerup = false;
     Color originalColour;
-    private Timer timer;
     private bool gameOver;
 
     //Controllers
     SoundController soundController;
+    GameController gameController;
+    Timer timer;
     CameraController cameraController;
 
     [Header("UI")]
@@ -39,14 +40,16 @@ public class PlayerController : MonoBehaviour
         pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length;
         //Run the check pickips function
         SetCountText();
-        //Get the timer object ans start the timer
-        timer = FindObjectOfType<Timer>();
-        timer.StartTimer();
-
+      
         //Turn on our In Game Panel
         inGamePanel.SetActive(true);
         //Turn off our Game Over Panel
         gameOverPanel.SetActive(false);
+
+        gameController = FindObjectOfType<GameController>();
+        timer = FindObjectOfType<Timer>();
+        if (gameController.gameType == Gametype.SpeedRun)
+            StartCoroutine(timer.StartCountdown());
 
         soundController = FindObjectOfType<SoundController>();
 
@@ -59,14 +62,12 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    private void Update()
-    {
-        timerText.text = "Time: " + timer.GetTime().ToString("F2");
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (gameController.gameType == Gametype.SpeedRun && !timer.IsTiming())
+            return;
+
         if (gameOver == true)
                 return;
 
@@ -129,14 +130,13 @@ public class PlayerController : MonoBehaviour
     {
         //Set the game over to true
         gameOver = true;
-        //Stop the timer
-        timer.StopTimer();
         //Turn on our Win Panel    
         gameOverPanel.SetActive(true);
         //Turn off our In Game Panel
         inGamePanel.SetActive(false);
-        //Display the timer on the win time text
-        winTimeText.text = "Your time was: " + timer.GetTime().ToString("F2");
+
+        if (gameController.gameType == Gametype.SpeedRun)
+            timer.StopTimer();
 
         soundController.PlayWinSound();
 
