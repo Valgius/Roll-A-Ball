@@ -40,5 +40,6 @@ public class Powerup : MonoBehaviour
         //If this powerup relates to speed, reset our player controller speed to it's base level
         if(myPowerup == PowerupType.SpeedUp || myPowerup == PowerupType.SpeedDown)
                 playerController.speed = playerController.baseSpeed;
+
     }
 }

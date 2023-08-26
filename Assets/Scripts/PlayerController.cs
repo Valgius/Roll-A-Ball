@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     GameObject resetPoint;
     bool resetting = false;
     bool grounded = true;
-    bool activePowerup = false;
+    public bool activePowerup = false;
     Color originalColour;
     private bool gameOver;
 
@@ -153,6 +153,18 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ResetPlayer());
         }
 
+        if (collision.gameObject.CompareTag("Door"))
+        {
+            if (activePowerup == true)
+            {
+                //Logic for breaking Objects
+                soundController.PlayCollisionSound(collision.gameObject);
+                Destroy(collision.gameObject);
+                activePowerup = false;
+            }
+        }
+
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (activePowerup == false)
@@ -162,17 +174,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 //Logic for killing enemy
-                soundController.PlayCollisionSound(collision.gameObject);
-                Destroy(collision.gameObject);
-                activePowerup = false;
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Door"))
-        {
-            if (activePowerup == true)
-            {
-                //Logic for breaking Objects
                 soundController.PlayCollisionSound(collision.gameObject);
                 Destroy(collision.gameObject);
                 activePowerup = false;
