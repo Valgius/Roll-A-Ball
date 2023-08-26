@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         if (gameOver == true)
-                return;
+            return;
 
         if (resetting)
             return;
