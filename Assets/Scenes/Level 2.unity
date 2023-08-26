@@ -1947,7 +1947,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonBasic
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a34e27babc895ad47aa221fab2d4116f, type: 3}
 --- !u!4 &450091651 stripped
 Transform:
