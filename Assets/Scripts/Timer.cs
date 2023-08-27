@@ -87,9 +87,4 @@ public class Timer : MonoBehaviour
     {
         return timing;
     }
-
-    public float GetTime()
-    {
-        return currentTime;
-    }
 }

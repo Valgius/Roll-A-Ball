@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Gametype { Normal, SpeedRun }
+public enum GameType { Normal, SpeedRun }
 
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
-    public Gametype gameType;
+    public GameType gameType;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     }
 
     //Sets the game type from our selections
-    public void SetGameType(Gametype _gameType)
+    public void SetGameType(GameType _gameType)
     {
         gameType = _gameType;
     }
@@ -32,8 +32,8 @@ public class GameController : MonoBehaviour
     public void ToggleSpeedRun(bool _speedRun)
     {
         if (_speedRun)
-            SetGameType(Gametype.SpeedRun);
+            SetGameType(GameType.SpeedRun);
         else
-            SetGameType(Gametype.Normal);
+            SetGameType(GameType.Normal);
     }
 }

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
         gameController = FindObjectOfType<GameController>();
         timer = FindObjectOfType<Timer>();
-        if (gameController.gameType == Gametype.SpeedRun)
+        if (gameController.gameType == GameType.SpeedRun)
             StartCoroutine(timer.StartCountdown());
 
         soundController = FindObjectOfType<SoundController>();
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (gameController.gameType == Gametype.SpeedRun && !timer.IsTiming())
+        if (gameController.gameType == GameType.SpeedRun && !timer.IsTiming())
             return;
 
         if (gameOver == true)
@@ -135,11 +135,11 @@ public class PlayerController : MonoBehaviour
         gameOverPanel.SetActive(true);
         //Turn off our In Game Panel
         inGamePanel.SetActive(false);
-
-        if (gameController.gameType == Gametype.SpeedRun)
-            timer.StopTimer();
-
         soundController.PlayWinSound();
+
+
+        if (gameController.gameType == GameType.SpeedRun)
+            timer.StopTimer();
 
         //Set the Velocity of the rigidbody to zero
         rb.velocity = Vector3.zero;

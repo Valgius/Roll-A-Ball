@@ -17,7 +17,7 @@ public class SpeedRunToggleFix : MonoBehaviour
     IEnumerator FixSpeedRunToggle()
     {
         yield return new WaitForEndOfFrame();
-        if (gameController.gameType == Gametype.SpeedRun)
+        if (gameController.gameType == GameType.SpeedRun)
             toggle.isOn = true;
         else
             toggle.isOn = false;
