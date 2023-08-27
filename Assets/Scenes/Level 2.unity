@@ -231,7 +231,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -502,6 +502,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 970932095101194972, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970932095734759811, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 970932095945926752, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -510,10 +518,7 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Roll over water for a speed boost.
 
-        Speed boost to break obstacles
-        and defeat enemies
-
-'
+        Speed boost to break obstacles.'
       objectReference: {fileID: 0}
     - target: {fileID: 970932096449286392, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
       propertyPath: m_fontSize
@@ -545,17 +550,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 970932095101194972, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
   m_PrefabInstance: {fileID: 43386726}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &43386729 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 970932095625224763, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
-  m_PrefabInstance: {fileID: 43386726}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &43386730 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 970932094766089506, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
@@ -6556,8 +6550,8 @@ MonoBehaviour:
   countdownText: {fileID: 43386727}
   timerText: {fileID: 43386732}
   timesPanel: {fileID: 43386731}
-  myTimeResults: {fileID: 43386730}
-  bestTimeResult: {fileID: 43386729}
+  myTimeResults: {fileID: 1633993757}
+  bestTimeResult: {fileID: 1750209056}
 --- !u!114 &1443953383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7733,6 +7727,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a830de569619b438fa27b00e4ebf54, type: 3}
+--- !u!114 &1633993757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 970932094860214590, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
+  m_PrefabInstance: {fileID: 43386726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1642603004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8201,6 +8206,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4076036372234024857, guid: 9fe00989960f6b7438c0a5ea504cb731, type: 3}
   m_PrefabInstance: {fileID: 2008234892}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1750209056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 970932096107105592, guid: 3b89fde7248d7d044838d3995b363c77, type: 3}
+  m_PrefabInstance: {fileID: 43386726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1758237183
 PrefabInstance:
   m_ObjectHideFlags: 0
