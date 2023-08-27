@@ -8131,6 +8131,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 690608872}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 06c5a0982b9d3564581fd3f3d04412cb, type: 3}
     - target: {fileID: 362990386057515400, guid: a34e27babc895ad47aa221fab2d4116f, type: 3}
       propertyPath: myScript
       value: 
