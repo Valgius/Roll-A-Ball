@@ -37,8 +37,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         //Get the number of pickups in our scene
-        pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length;
-        //Run the check pickips function
+        pickupCount = GameObject.FindGameObjectsWithTag("Pick Up").Length
+                    + GameObject.FindGameObjectsWithTag("Bowling Pin").Length;
+
+        //Run the check pickups function
         SetCountText();
       
         //Turn on our In Game Panel
@@ -216,5 +218,11 @@ public class PlayerController : MonoBehaviour
         GetComponent<Renderer>().material.color = originalColour;
         resetting = false;
 
+    }
+
+    public void PinFall()
+    {
+        pickupCount -= 1;
+        SetCountText();
     }
 }

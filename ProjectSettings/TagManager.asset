@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Powerup
   - Door
+  - Bowling Pin
   layers:
   - Default
   - TransparentFX
